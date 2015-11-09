@@ -1,0 +1,60 @@
+// site-right-bar
+@site-right-bar-width: 200px;
+@site-right-bar-background: #222222;
+
+// toggle-nav styles
+@toggle-nav-border-radius: 5px;
+@toggle-nav-background-color: transparent;
+ 
+#site-wrapper {
+
+  position: relative;
+  overflow: hidden; 
+  width: 100%;
+
+  .toggle-nav {
+
+  	display: block;
+    position: absolute; top: 10px; right: 10px; z-index: 1;
+    padding: 9px 10px;
+    .border-radius(@toggle-nav-border-radius);
+    background-color: @toggle-nav-background-color;
+
+    .icon-bar {
+
+      display: block;
+      width: 22px; height: 2px;
+      background-color: #000000;
+
+      + .icon-bar {
+
+        margin-top: 4px;
+      }
+    }
+
+    &:hover, &:active, &:focus {
+
+      outline: 0;
+    }
+  }
+
+  #site-canvas {
+
+  	width: 100%;
+    position: relative;
+    .translate(); // default value for x and y is 0 
+    .transition(.3s ease all);
+  }
+
+  &.show-nav #site-canvas {
+
+    .translate(-@site-right-bar-width); // default value for y is 0
+  }
+
+  #site-right-bar {
+
+    position: absolute; top: 0; right: -@site-right-bar-width;
+    width: @site-right-bar-width; height: 100%;
+    background: @site-right-bar-background;
+  }
+}
